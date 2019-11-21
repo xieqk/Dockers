@@ -64,13 +64,9 @@ RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list &&
         ipython \
         Cython \
         ffmpeg \
-        pytorch \
-        visdom \
-        sk-video \
+        pytorch \ 
         imageio \
         h5py \
-        tensorboard \
-        tensorboardx \
         torchvision \
         cffi \
         cudatoolkit=10.0 \
@@ -86,12 +82,16 @@ RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list &&
         six \
         scipy \
         munkres \
+        visdom \
+        sk-video \
         nibabel \
         pandas \
         matplotlib \
         tqdm \
         scikit-learn \
         scikit-image \
+        tensorboard \
+        tensorboardx \
         pytest \
         wget \
         gym \
