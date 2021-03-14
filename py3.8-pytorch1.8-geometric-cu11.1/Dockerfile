@@ -41,7 +41,7 @@ RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list &&
     conda config --set show_channel_urls yes && \
     conda config --add channels conda-forge && \
     $CONDA_INSTALL \
-        python=3.7 && \
+        python=3.8 && \
     $CONDA_INSTALL \
         ipython \
         Cython \
