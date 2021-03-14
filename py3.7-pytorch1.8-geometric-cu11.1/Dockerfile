@@ -6,11 +6,11 @@
 # tensorboardx  1.6    (conda)
 # ffpmeg        4.1    (conda)
 # ==================================================================
-FROM pytorch/pytorch:1.6.0-cuda10.1-cudnn7-runtime
+FROM pytorch/pytorch:1.8.0-cuda11.1-cudnn8-runtime
 
 ENV PATH /opt/conda/bin:$PATH
-ENV PATH /usr/local/cuda-10.1/bin:$PATH
-ENV LD_LIBRARY_PATH /usr/lib/x86_64-linux-gnu:/usr/local/cuda-10.1/lib64:$LD_LIBRARY_PATH
+ENV PATH /usr/local/cuda-11.1/bin:$PATH
+ENV LD_LIBRARY_PATH /usr/lib/x86_64-linux-gnu:/usr/local/cuda-11.1/lib64:$LD_LIBRARY_PATH
 
 RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list && \
     APT_INSTALL="apt-get install -y --no-install-recommends" && \
