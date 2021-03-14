@@ -1,11 +1,3 @@
-# ==================================================================
-# module list
-# ------------------------------------------------------------------
-# python        3.7    (conda)
-# pytorch       1.0.1  (conda)
-# tensorboardx  1.6    (conda)
-# ffpmeg        4.1    (conda)
-# ==================================================================
 FROM pytorch/pytorch:1.8.0-cuda11.1-cudnn8-runtime
 
 ENV PATH /opt/conda/bin:$PATH
@@ -59,7 +51,9 @@ RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list &&
         imageio \
         h5py \
         tensorboard \
+        tensorboardX \
         cffi \
+        av \
         && \
 # ==================================================================
 # pip
@@ -83,6 +77,8 @@ RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list &&
         tqdm \
         scikit-learn \
         pytest \
+        cython-bbox \
+        easydict \
         yacs \
         wget \
         gym \
