@@ -17,3 +17,9 @@
 + ipython
 + lmdb
 + h5py
++ 
+## Build
+
+```bash
+docker build -t xqk-py37-pytorch1.0.1-cu90 ./images/xqk-py37-pytorch1.0.1-cu90/
+```

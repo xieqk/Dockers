@@ -64,10 +64,10 @@ RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list &&
 # ==================================================================
 # pip
 # ------------------------------------------------------------------
-    pip install torch-scatter -f https://pytorch-geometric.com/whl/torch-1.6.0+cu101.html && \
-    pip install torch-sparse -f https://pytorch-geometric.com/whl/torch-1.6.0+cu101.html && \
-    pip install torch-cluster -f https://pytorch-geometric.com/whl/torch-1.6.0+cu101.html && \
-    pip install torch-spline-conv -f https://pytorch-geometric.com/whl/torch-1.6.0+cu101.html && \
+    pip install torch-scatter -f https://pytorch-geometric.com/whl/torch-1.8.0+cu111.html && \
+    pip install torch-sparse -f https://pytorch-geometric.com/whl/torch-1.8.0+cu111.html && \
+    pip install torch-cluster -f https://pytorch-geometric.com/whl/torch-1.8.0+cu111.html && \
+    pip install torch-spline-conv -f https://pytorch-geometric.com/whl/torch-1.8.0+cu111.html && \
     pip install torch-geometric && \
     $PIP_INSTALL \
         lmdb \
