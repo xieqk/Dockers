@@ -34,6 +34,8 @@ RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list &&
         libsm6 \
         libxext6 \
         libxrender-dev \
+        libgl1-mesa-glx \
+        python3-opencv \
         && \
 # ==================================================================
 # conda
