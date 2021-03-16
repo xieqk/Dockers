@@ -6,7 +6,7 @@ ENV LD_LIBRARY_PATH /usr/lib/x86_64-linux-gnu:/usr/local/cuda-11.1/lib64:$LD_LIB
 
 RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list && \
     APT_INSTALL="apt-get install -y --no-install-recommends" && \
-    PIP_INSTALL="python -m pip --no-cache-dir install --upgrade " && \
+    PIP_INSTALL="python -m pip --no-cache-dir install --upgrade -i https://opentuna.cn/pypi/web/simple " && \
     CONDA_INSTALL="conda install -y" && \
     rm -rf /var/lib/apt/lists/* \
            /etc/apt/sources.list.d/cuda.list \
