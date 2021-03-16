@@ -91,5 +91,6 @@ RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list &&
     apt-get clean && \
     apt-get autoremove && \
     rm -rf /var/lib/apt/lists/* /tmp/* ~/* && \
-    chmod a+w /
+    chmod a+w / && \
+    chmod -R a+w /root 
 EXPOSE 6006
