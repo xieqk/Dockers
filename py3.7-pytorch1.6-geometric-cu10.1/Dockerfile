@@ -47,7 +47,6 @@ RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list &&
     $CONDA_INSTALL \
         ipython \
         Cython \
-        ffmpeg \
         visdom \
         sk-video \
         imageio \
