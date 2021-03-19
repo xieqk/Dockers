@@ -1,8 +1,11 @@
-FROM pytorch/pytorch:1.8.0-cuda11.1-cudnn8-runtime
+FROM pytorch/pytorch:1.8.0-cuda11.1-cudnn8-devel
+# FROM nvidia/cuda:11.1-cudnn8-devel-ubuntu18.04
 
-ENV PATH /opt/conda/bin:$PATH
+# ENV PATH /opt/conda/bin:$PATH
 ENV PATH /usr/local/cuda-11.1/bin:$PATH
 ENV LD_LIBRARY_PATH /usr/lib/x86_64-linux-gnu:/usr/local/cuda-11.1/lib64:$LD_LIBRARY_PATH
+ENV CUDA_HOME /usr/local/cuda-11.1
+ENV CPATH /usr/local/cuda-11.1/include
 
 RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list && \
     APT_INSTALL="apt-get install -y --no-install-recommends" && \
@@ -40,12 +43,19 @@ RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list &&
 # ==================================================================
 # conda
 # ------------------------------------------------------------------
+    # wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh && \
+    # /bin/bash ~/miniconda.sh -b -p /opt/conda && \
+    # rm ~/miniconda.sh && \
     conda config --set show_channel_urls yes && \
     conda config --add channels conda-forge && \
+    conda config --add channels pytorch && \
     $CONDA_INSTALL \
         python=3.8 && \
     $CONDA_INSTALL \
-        ipython \
+        # pytorch \
+        # torchvision \
+        # torchaudio \
+        # cudatoolkit=11.1 \
         Cython \
         visdom \
         sk-video \
@@ -53,7 +63,22 @@ RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list &&
         h5py \
         tensorboard \
         tensorboardX \
+        matplotlib \
+        tqdm \
+        scikit-learn \
+        scipy \
+        pillow \
+        munkres \
+        six \
+        nibabel \
+        easydict \
+        pandas \
+        yacs \
+        wget \
+        pytest \
         cffi \
+        lmdb \
+        gym \
         av \
         && \
 # ==================================================================
@@ -65,24 +90,9 @@ RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list &&
     pip install torch-spline-conv -f https://pytorch-geometric.com/whl/torch-1.8.0+cu111.html && \
     pip install torch-geometric && \
     $PIP_INSTALL \
-        lmdb \
         opencv-python \
         opencv-contrib-python \
-        Pillow \
-        six \
-        scipy \
-        munkres \
-        nibabel \
-        pandas \
-        matplotlib \
-        tqdm \
-        scikit-learn \
-        pytest \
         cython-bbox \
-        easydict \
-        yacs \
-        wget \
-        gym \
         && \
     conda clean -y --all && \
 # ==================================================================
@@ -92,6 +102,14 @@ RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list &&
     apt-get clean && \
     apt-get autoremove && \
     rm -rf /var/lib/apt/lists/* /tmp/* ~/* && \
-    chmod 777 / && \
-    chmod -R 777 /root 
+    chmod -R 777 /root && \
+    mkdir /.cache && \
+    chmod -R 777 /.cache && \
+    mkdir /.config && \
+    chmod -R 777 /.config
+
+ENV TMPDIR /tmp
+ENV TEMP /tmp
+ENV HOME /root
+
 EXPOSE 6006
