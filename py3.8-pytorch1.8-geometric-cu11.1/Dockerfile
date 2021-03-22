@@ -80,7 +80,7 @@ RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list &&
         lmdb \
         gym \
         av \
-        openh264 = 2.1.0 \
+        openh264=2.1.0 \
         && \
 # ==================================================================
 # pip
