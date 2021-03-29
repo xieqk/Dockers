@@ -1,7 +1,7 @@
 # FROM pytorch/pytorch:1.8.0-cuda11.1-cudnn8-devel
 FROM nvidia/cuda:11.0-cudnn8-runtime-ubuntu18.04
 
-# ENV PATH /opt/conda/bin:$PATH
+ENV PATH /opt/conda/bin:$PATH
 ENV PATH /usr/local/cuda-11.0/bin:$PATH
 ENV LD_LIBRARY_PATH /usr/lib/x86_64-linux-gnu:/usr/local/cuda-11.0/lib64:$LD_LIBRARY_PATH
 ENV CUDA_HOME /usr/local/cuda-11.0
